@@ -1,16 +1,24 @@
-target = 13195
-prime_grid = [True] * target  
+import math 
+
+target = 600851475143
 target_factors = [] 
-for i in range(2,target):
+
+# find all divisors of target 
+for i in range(2,int(math.sqrt(target))+1):
     x = 2*i
     while x < target:
-        prime_grid[x] = False  
         x += i 
     if x == target:
         target_factors.append(i) 
 
-for i in range(2,target):
-    if prime_grid[i] and i in target_factors:
-        print(i) 
+# delete those who are primes 
+for i in range(2,int(math.sqrt(target))+1):
+    x = 2*i
+    while x < target:
+        if x in target_factors:
+            target_factors.remove(x) 
+        x += i 
 
+print(target_factors)
 
+        
