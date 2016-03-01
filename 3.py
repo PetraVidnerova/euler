@@ -1,24 +1,30 @@
 import math 
 
 target = 600851475143
-target_factors = [] 
+factors = [] 
 
-# find all divisors of target 
-for i in range(2,int(math.sqrt(target))+1):
+i=3
+while i <= target:
+    if target % i == 0: 
+        factors.append(i) 
+        target /= i 
+    i += 1 
+
+print(factors) 
+
+max_factor = max(factors) 
+
+primers = [True]*(max_factor+1)
+ 
+for i in range(2,max_factor+1):
     x = 2*i
-    while x < target:
-        x += i 
-    if x == target:
-        target_factors.append(i) 
-
-# delete those who are primes 
-for i in range(2,int(math.sqrt(target))+1):
-    x = 2*i
-    while x < target:
-        if x in target_factors:
-            target_factors.remove(x) 
+    while x<=max_factor:
+        primers[x] = False
         x += i 
 
-print(target_factors)
+for x in factors:
+    if primers[x]:
+        print(x) 
 
-        
+print(primers[:30])
+
