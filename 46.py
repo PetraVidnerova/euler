@@ -35,7 +35,7 @@ def  is_prime(x):
     return True 
 
 def is_even(x):
-    return x % 2 == 0
+    return int(x) % 2 == 0
 
         
 def is_square(x):
@@ -43,20 +43,35 @@ def is_square(x):
     if x < len(squares) and squares[x] != None:
         return squares[x]  
     sqrtx = math.sqrt(x) 
-    if int(sqrtx)-sqrtx < 0.00000001:
+#    if int(sqrtx)-sqrtx < 0.00000000000001:
+    if int(sqrtx)==sqrtx: 
         addToSquares(x, True)
         return True
     addToSquares(x, False)
     return False
 
 def is_prime_and_square(x):
-    for y in range(1,x):
-        if is_even(x-y) and is_prime(y) and is_square(x - y // 2):
-            return True 
+    for y in range(2,x):
+        if is_even(x-y) and is_prime(y) and is_square((x - y) // 2):
+             return True 
     return False 
 
+#for i in range(100):
+#    if is_square(i):
+#        print(i)
+#quit()
+
+#for i in range(100):
+#    if is_prime(i):
+#        print(i)
+
+#for i in range(50):
+#    if is_prime_and_square(i):
+#        print(i)
+#quit()
+
 i=3
-while True:
+while i<1000000:
     i += 2
     if i % 10001 == 0:
         print(i)
