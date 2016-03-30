@@ -28,7 +28,7 @@ def is_sequence(x):
 
 def contain_sequence(x):
     """
-    Returns sequence if x contains is,
+    Returns sequence if x contains it,
     empty list otherwise.
     """
     for triple in itertools.combinations(x,3):
